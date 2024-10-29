@@ -234,10 +234,6 @@ def manage_favorites(fav_type, fav_id):
             db.session.rollback()
             return jsonify({"error": str(e)}), 500
 
-@app.route('/favorites/user/<int:user_id>', methods=['GET'])
-def get_all_user_favorites(user_id):
-    favorites = Favorites.query.filter_by(user_id=user_id).all()
-    return jsonify([favorite.serialize() for favorite in favorites]), 200
 
 
 # This only runs if `$ python src/app.py` is executed
